@@ -1,0 +1,75 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package lab8cs;
+
+import java.util.Random;
+import java.util.Scanner;
+
+public class Lab8cs {
+
+    static Scanner scanner = new Scanner(System.in);
+    private static Random random = new Random();
+ 
+    public static double next_normal() {
+        double sigma = 0.6, lambda = 3.1;
+        double randx = Math.random();
+        double result = 0;
+        result = (1 / (Math.sqrt(2 * (22 / 7) * Math.pow(sigma, 2))));
+        result *= Math.exp(-Math.pow(randx - lambda, 2) / (2 * Math.pow(sigma, 2)));
+        return result;
+    }
+
+    public static double next_uniform() {
+        int b = 20;
+        int a = 12;
+        double result = 0.0;
+        result = 1 / (b - a);
+        return result;
+    }
+
+    public static double next_exponential() {
+        double randx;
+        double lambda = 5.0;
+        double result;
+        randx = Math.random();
+        result = 1 - (lambda * Math.exp(-randx * lambda));
+        return result;
+    }
+
+    public static double variate_exponential(double random_number) {
+        double lambda = 5.0;
+        return Math.log(1 - random_number) / (-lambda);
+    }
+
+    public static double variate_uniform(double random_number) {
+        int a = 12, b = 20;
+        return a + random_number * (b - a);
+    }
+
+    public static double variate_normal(double random_number) {
+        double lambda = 3.1, sigma = 0.6;
+        double value = Math.log(random_number * sigma * Math.sqrt(2 * (22 / 7))) * 
+                -2 * sigma * sigma;
+        return Math.sqrt(value) + lambda;
+    }
+
+    public static void main(String[] args) {
+        for (int i = 0; i < 5; i++) {
+            double exponential_number = next_exponential();
+            System.out.printf("Random variate for the exponential distribution number %.4f "
+                    + "is %.4f\n", exponential_number, variate_exponential(exponential_number)); }
+        System.out.println("\n\n");
+        for (int i = 0; i < 5; i++) {
+            double normal_number = next_normal();
+            System.out.printf("Random variate for the normal distribution number %.4f"
+                    + " is %.4f\n", normal_number, variate_normal(normal_number)); }
+        System.out.println("\n\n");
+        for (int i = 0; i < 5; i++) {
+            double uniform_number = next_uniform();
+            System.out.printf("Random variate for the uniform distribution number %.4f "
+                    + "is %.4f\n", uniform_number, variate_uniform(uniform_number)); }
+    }
+}

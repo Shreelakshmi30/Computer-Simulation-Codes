@@ -1,0 +1,116 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package cs_lab4;
+import java.util.Scanner;
+import java.util.Random;
+
+
+public class CS_lab4 {
+    static int a,b,c,d,e,f,n,x,r,fail=0,succ=0,d_qu,e_qu,f_qu;
+    static double bino,geo,neg_bino,v_gd,v_nb;
+    static float p,q,m_gd,m_bd,v_bd,m_nb;
+    static int facto(int n)
+    {          
+        if(n==0)
+            return 1;
+        else
+            return (n)*facto(n-1);
+    }
+    static int rand()
+    {
+       Random rand=new Random();
+        System.out.println("The random numbers are");
+       for(int i=0;i<n;i++)
+       {
+          r=rand.nextInt(2);
+           System.out.println(r);
+                    if(r==0)
+             fail++;
+          else
+              succ++;
+       }
+        System.out.println("The number of success are:"+succ+"\tThe number of failures are:"+fail);
+         System.out.println("\n");
+        return 0;        
+    }
+    static int binomial_distribution()
+{  
+    bino=(a*Math.pow(p,x)*Math.pow(q,(n-x)))/(b*c);
+    System.out.println("The binomial distribution is "+bino);
+    m_bd=n*p;
+    System.out.println("The mean is "+m_bd);
+    v_bd=n*p*q;
+    System.out.println("The variance is "+v_gd);
+     System.out.println("\n");
+    return 0;
+}
+    static int geometric_distribution()
+    {
+    geo=Math.pow(p,x)*Math.pow(q,(x-1));
+    System.out.println("The geometric distribution is "+geo);
+    m_gd=1/p;
+    System.out.println("The mean is "+m_gd);
+    v_gd=(float)(1-p)/Math.pow(p,2);
+    System.out.println("The variance is "+v_gd);
+        System.out.println("\n");
+    return 0;
+    }
+    static int negativeBinomial()
+{  
+    System.out.println("Enter the rth success");
+    Scanner sr=new Scanner(System.in);
+    r=sr.nextInt();
+    d=facto(x-1);
+    e=facto(x-r);
+    f=facto(r-1);
+    neg_bino=(d*Math.pow(p,r)*Math.pow(q,(x-r)))/(e*f);
+    System.out.println("The negative binomial is "+neg_bino);
+    m_nb=(float)r/p;
+    System.out.println("The mean is "+m_nb);
+    v_nb=(float)(r*q)/Math.pow(p,2);
+    System.out.println("The variance is "+v_nb);
+    System.out.println("\n");
+    return 0;
+}
+    static int question()
+    {
+       double p_ques=0.6,q_ques=0.4;
+       int x_ques,r_ques;
+       System.out.println("Enter the value for x for ink-jet printer");
+       Scanner s=new Scanner(System.in);
+       
+       x_ques=s.nextInt();
+       
+       System.out.println("Enter the value for rth success for ink-jet printer");
+       r_ques=s.nextInt();
+       double geo_ques=Math.pow(p_ques,x_ques)*Math.pow(q_ques,(x_ques-1));
+        System.out.println("The probability of first acceptable ink-jet printer is the third one is "+geo_ques);
+        d_qu=facto(x_ques-1);
+    e_qu=facto(x_ques-r_ques);
+    f_qu=facto(r_ques-1);
+        double nb_ques=(d_qu*Math.pow(p_ques,r_ques)*Math.pow(q_ques,(x_ques-r_ques)))/(e_qu*f_qu);
+        System.out.println("The probability that the third printer inspected is the second acceptable printer "
+                + "is "+nb_ques);
+        
+        return 0;
+    }
+    public static void main(String[] args) {
+    System.out.println("Enter the value of n and x");             
+    Scanner sc=new Scanner(System.in);
+    n=sc.nextInt();
+    x=sc.nextInt(); 
+    a=facto(n);
+    b=facto(x);
+    c=facto(n-x);
+    rand();
+    p=(float)succ/n;
+    q=(1-p);  
+    binomial_distribution();
+    geometric_distribution();
+    negativeBinomial();
+    question();
+    }
+}

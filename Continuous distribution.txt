@@ -1,0 +1,70 @@
+
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package cs_lab5;
+
+import java.util.Random;
+
+public class CS_lab5 {
+
+    /**
+     * @param args the command line arguments
+     */
+    
+    public static void normalDistribution(){
+        
+       double[] list = new double[10];
+       double mean = 0.5, std = 0.5;
+       Random rng = new Random();
+       System.out.println("NORMALLY DISTRIBUTED");
+       for(int i = 0;i<list.length;i++) {
+            list[i] = mean + std * rng.nextGaussian();
+            System.out.println(list[i]);
+       }
+    }
+    public static void uniformDistribution(){
+        
+        double mean =  0.5;
+        double sd = 0.1;
+        double rNum;
+        System.out.println("\nUNIFORMALLY DISTRIBUTED");
+        Random r = new Random();
+        for(int i=0;i<10;i++){
+        rNum = sd * r.nextFloat() + mean;
+        System.out.println(rNum);
+         }
+
+    }
+    
+    public static double getNext(double lambda) {
+            Random rand  =new Random();
+            return  Math.log(1-rand.nextDouble())/(-lambda);
+    }
+    
+    public static void expoDistribution(){
+            
+            double lambda = 1.0/0.25;
+            System.out.println("\nEXPONENTIALLY DISTRIBUTED");
+            for(int i=0;i<10;i++){
+               double r = getNext(lambda);
+                System.out.println(r);
+         }
+    }
+    
+    public static void main(String[] args) {
+        
+            normalDistribution();
+            uniformDistribution();
+            expoDistribution();
+            
+        }
+  
+        
+        
+        
+    }
+   

@@ -1,0 +1,83 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package ks_test;
+import java.util.Scanner;
+
+
+class KSTest {
+    void kst(double R_num[], double dalpha) {
+        for (int i = 0; i < R_num.length; i++) {
+            for (int j = i + 1; j < R_num.length; j++) {
+                if (R_num[i] > R_num[j]) {
+                    double temp;
+                    temp = R_num[i];
+                    R_num[i] = R_num[j];
+                    R_num[j] = temp;
+                }}}
+        float d1[] = new float[R_num.length];
+        float d2[] = new float[R_num.length];
+        float n = (float) R_num.length;                                                                                            
+        for (int i = 0; i < R_num.length; i++) {
+            d1[i] = (float) (((i + 1) / n) - R_num[i]);
+        }
+        for (int i = 0; i < R_num.length; i++) {
+            d2[i] = (float) (R_num[i] - (i) / n);
+        }
+        float d1max = d1[0];
+        for (int i = 0; i < R_num.length; i++) {
+            if (d1max <= d1[i]) {
+                d1max = d1[i];
+        }}
+        System.out.println("D+ = " + d1max);
+        float d2max = d2[0];
+        for (int i = 0; i < R_num.length; i++) {
+            if (d2max <= d2[i]) {
+                d2max = d2[i];
+            }
+        }
+        System.out.println("D- = " + d2max);
+        float dplus = d1max;
+        float dminus = d2max;
+        float d;
+        if (dplus > dminus) {
+            d = dplus;
+            System.out.println("D = " + d);
+        } else {
+            d = dminus;
+            System.out.println("D = " + d);
+        }
+        if (dalpha > d) {
+            System.out.println("Null Hypothesis is not rejected);
+        } else {
+            System.out.println("Null Hypothesis is rejected");
+        }
+    }
+}
+public class Ks_test {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
+                System.out.print("\nKolmogorov Smirnov Test!");
+        Scanner input = new Scanner(System.in);
+        System.out.print("\nEnter total numbers : ");
+        int n = input.nextInt();
+        double num[] = new double[n];
+        System.out.print("Enter the numbers : ");
+        for (int i = 0; i < n; i++) {
+            num[i] = input.nextDouble();
+        }
+        float da;
+        System.out.print("Enter critcal value (CV) : ");
+        da = input.nextFloat();
+        KSTest ks = new KSTest();
+        ks.kst(num, da);
+    
+    }
+    
+}

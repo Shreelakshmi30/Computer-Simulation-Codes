@@ -1,0 +1,120 @@
+package cs_6;
+
+import java.util.Scanner;
+
+
+public class Cs_6 {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+      int x[]= new int[100];
+      int a,c,m,n,i;
+        Scanner in=new Scanner(System.in);
+        System.out.println("the a is");
+        a=in.nextInt();
+        System.out.println("the x[] is");
+        x[0]=in.nextInt();
+        System.out.println("the c is");
+        c=in.nextInt();
+        System.out.println("the m is");
+        m=in.nextInt();
+        System.out.println("the n is");
+        n=in.nextInt();
+        System.out.println("\n");
+        System.out.println("the sequence is");
+        for(i=0;i<n;i++){
+            x[i+1]=(a*x[i]+c)%m;
+            System.out.println(x[i+1]);
+        }
+     System.out.println("\t");
+        
+    }
+    
+}
+
+
+
+
+
+
+
+
+
+MCG
+
+
+package cs_6;
+
+import java.util.Scanner;
+
+public class Cs_6 {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+      int x[]= new int[100];
+      int a,c,m,i,k;
+        Scanner in=new Scanner(System.in);
+        System.out.println("the k is");
+        k=in.nextInt();
+        a=1+(4*k);
+        System.out.println("the x[] is");
+        x[0]=in.nextInt();
+        System.out.println("the c is");
+        c=in.nextInt();
+        System.out.println("the m(2^b) is");
+        m=in.nextInt();
+        System.out.println("\n");
+        System.out.println("the sequence is");
+        for(i=0;i<20;i++){
+            x[i+1]=(a*x[i])%m;
+            System.out.println(x[i+1]);
+        }
+     System.out.println("\t");
+        
+    }
+    
+}
+
+
+PROPRTY 2
+a=3+(8*k)
+i<40
+
+property 3
+package cs_6;
+
+import static java.lang.Math.pow;
+import java.util.Scanner;
+
+public class Cs_6 {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+      int x[]= new int[100];
+      int a,c=0,m,n,i,k,p;
+        Scanner in=new Scanner(System.in);
+        System.out.println("the a is");
+        a=in.nextInt();
+        System.out.println("the x[] is");
+        x[0]=in.nextInt();
+        System.out.println("the m) is");
+        m=in.nextInt();
+        System.out.println("\n");
+        System.out.println("the sequence is");
+        k=m-1;
+        p=(int)pow(a,k);
+        for(i=0;i<20;i++){
+            x[i+1]=(a*x[i]+c)%m;
+            System.out.println(x[i+1]);
+        }
+     System.out.println("\t");
+        
+    }
+    
+}

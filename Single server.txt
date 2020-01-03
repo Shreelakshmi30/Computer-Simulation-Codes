@@ -1,0 +1,73 @@
+package cs2;
+import java.util.*;
+public class Cs2 {
+
+    public static void main(String[] args) {
+  Scanner read=new Scanner(System.in);
+  System.out.println("Enter number of customers: ");
+  int c=read.nextInt();
+  int st[]=new int[c];
+  int iat[]=new int[c];
+  System.out.println("Enter the service time of each customer \n");
+  for(int i=0;i<c;i++)
+  {
+      st[i]=read.nextInt();
+  }
+  System.out.println("Enter the inter arrival time for each customer \n");
+  for(int i=0;i<c;i++)
+  {
+      iat[i]=read.nextInt();
+  }
+  int arrivalTime[]=new int[c];
+  int ServiceStart[]=new int[c];
+  int serviceEnd[]=new int[c];
+  int waittime[]=new int[c];
+  int idletime[]=new int[c];
+  int totaltime[]=new int[c];
+  for(int i=1;i<c;i++)
+  {
+      arrivalTime[i]=arrivalTime[i-1]+iat[i];
+  }
+  ServiceStart[0]=arrivalTime[0];
+  serviceEnd[0]=ServiceStart[0]+st[0];
+  idletime[0]=iat[0];
+  totaltime[0]=st[0];
+  for(int i=1;i<c;i++)
+  {
+      if(serviceEnd[i-1]>arrivalTime[i])
+      {
+          ServiceStart[i]=serviceEnd[i-1];
+          waittime[i]=serviceEnd[i-1]-arrivalTime[i];
+      }
+      else
+      {
+          ServiceStart[i]=arrivalTime[i];
+          idealtime[i]=arrivalTime[i]-serviceEnd[i-1];
+      }
+             serviceEnd[i]=ServiceStart[i]+st[i];
+             totaltime[i]=st[i]+waittime[i];
+  }
+             System.out.println("Simulation table");
+             System.out.println("Req. \tIAT\tST\tAT\tSS\tSE\tWT\tIT\tTT\n");
+  
+             for(int i=0; i<c; i++){
+             System.out.println((i+1)+"\t"+iat[i]+"\t"+st[i]+"\t"+arrivalTime[i]+"\t"+ServiceStart[i]
+                     +"\t"+serviceEnd[i]+"\t"+waittime[i]+"\t"+idealtime[i]+"\t"+totaltime[i]);
+  }
+             System.out.println("Result\n");
+             System.out.println("Average waiting time = "+avg(waittime));
+             System.out.println("Average ideal time = "+avg(idealtime));
+             System.out.println("Average total system time = "+avg(totaltime));
+    }
+             public static float avg(int arr[])
+             {
+                 float sum=0;
+                 for(int i=0;i<arr.length;i++)
+                 {
+                     sum=sum+arr[i];
+                 }
+                 return sum/arr.length;
+             }
+    }
+    
+
